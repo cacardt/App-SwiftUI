@@ -11,9 +11,6 @@
 		D9D79F4D2B5A7985003EA68C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D79F4C2B5A7985003EA68C /* ContentView.swift */; };
 		D9D79F4F2B5A7988003EA68C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9D79F4E2B5A7988003EA68C /* Assets.xcassets */; };
 		D9D79F522B5A7988003EA68C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9D79F512B5A7988003EA68C /* Preview Assets.xcassets */; };
-		D9D79F5C2B5A7988003EA68C /* App_SwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D79F5B2B5A7988003EA68C /* App_SwiftUITests.swift */; };
-		D9D79F662B5A7988003EA68C /* App_SwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D79F652B5A7988003EA68C /* App_SwiftUIUITests.swift */; };
-		D9D79F682B5A7988003EA68C /* App_SwiftUIUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D79F672B5A7988003EA68C /* App_SwiftUIUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,10 +37,7 @@
 		D9D79F4E2B5A7988003EA68C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9D79F512B5A7988003EA68C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D9D79F572B5A7988003EA68C /* App SwiftUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "App SwiftUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9D79F5B2B5A7988003EA68C /* App_SwiftUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_SwiftUITests.swift; sourceTree = "<group>"; };
 		D9D79F612B5A7988003EA68C /* App SwiftUIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "App SwiftUIUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9D79F652B5A7988003EA68C /* App_SwiftUIUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_SwiftUIUITests.swift; sourceTree = "<group>"; };
-		D9D79F672B5A7988003EA68C /* App_SwiftUIUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App_SwiftUIUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,8 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				D9D79F492B5A7985003EA68C /* App SwiftUI */,
-				D9D79F5A2B5A7988003EA68C /* App SwiftUITests */,
-				D9D79F642B5A7988003EA68C /* App SwiftUIUITests */,
 				D9D79F482B5A7985003EA68C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,23 +100,6 @@
 				D9D79F512B5A7988003EA68C /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		D9D79F5A2B5A7988003EA68C /* App SwiftUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D9D79F5B2B5A7988003EA68C /* App_SwiftUITests.swift */,
-			);
-			path = "App SwiftUITests";
-			sourceTree = "<group>";
-		};
-		D9D79F642B5A7988003EA68C /* App SwiftUIUITests */ = {
-			isa = PBXGroup;
-			children = (
-				D9D79F652B5A7988003EA68C /* App_SwiftUIUITests.swift */,
-				D9D79F672B5A7988003EA68C /* App_SwiftUIUITestsLaunchTests.swift */,
-			);
-			path = "App SwiftUIUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +241,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9D79F5C2B5A7988003EA68C /* App_SwiftUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,8 +248,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9D79F682B5A7988003EA68C /* App_SwiftUIUITestsLaunchTests.swift in Sources */,
-				D9D79F662B5A7988003EA68C /* App_SwiftUIUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
