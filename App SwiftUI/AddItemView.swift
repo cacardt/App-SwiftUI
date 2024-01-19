@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct AddItemView: View {
-    @StateObject var inventory = Inventory()
-    @State private var isSheetPresented = false
+    @EnvironmentObject var inventory: Inventory
+    @Environment(\.dismiss) private var dismiss
     @State var name = ""
-    @State var rarity = ""
+    @State var rarity = Rarity.common
+    @State var game = Game.emptyGame
+    @State var quantity: Int = 1
+    @State var typeItem: ItemType = ItemType.bow
+    @State var attackItem: Bool = false
+    @State var attackStrength: Int = 1
     var body: some View {
         Form {
             Section{
@@ -22,21 +27,76 @@ struct AddItemView: View {
                     }
                 }
             }
+            Section {
+                Picker("Jeu", selection: $game){
+                    Text(String(describing: "Non spécifié").capitalized)
+                    ForEach(availableGames, id: \.self){game in
+                        Text(String(describing: game.name).capitalized)
+                    }
+                    
+                }
+                Stepper("Combien : \(quantity)", value: $quantity, in: 1...50)
+            }
+            Section {
+                HStack(){
+                    Text("Type")
+                    Spacer()
+                    Text("\(typeItem.rawValue)")
+                }
+                Picker("Type", selection: $typeItem){
+                    ForEach(ItemType.allCases, id: \.self) { theItem in
+                        Text(String(describing: theItem.rawValue).capitalized)
+                    }
+                }.pickerStyle(.palette)
+                
+
+            }
+            Section{
+                Toggle(isOn: $attackItem){
+                    Text("Item d'attaque ?")
+                }
+                if attackItem {
+                    Stepper("Force d'attaque : \(attackStrength)", value: $attackStrength, in: 1...50)
+                }
+                
+                
+            }
+            Section{
+                Button(action: {
+                    inventory.addItem(withItem: LootItem(id: UUID.init() ,quantity: quantity, name: name, type: typeItem, rarity: rarity, game: game))
+                    dismiss()
+                }, label: {
+                    Text("Ajouter")
+                })
+            }
         }
-        Button(action: {
-            inventory.addItem(withName: name)
-        }, label: {
-            Text("Ajouter")
-        })
+
     }
 }
-enum Rarity: CaseIterable{
-    case common
-    case uncommon
-    case rare
-    case epic
-    case legendary
-    case uniq
+enum Rarity: String, CaseIterable {
+    case common = "common"
+    case uncommon = "uncommon"
+    case rare = "rare"
+    case epic = "epic"
+    case legendary = "legendary"
+    case uniq = "uniq"
+
+    var color: Color {
+        switch self {
+        case .common:
+            return Color.gray
+        case .uncommon:
+            return Color.green
+        case .rare:
+            return Color.blue
+        case .epic:
+            return Color.purple
+        case .legendary:
+            return Color.orange
+        case .uniq:
+            return Color.red
+        }
+    }
     
 }
 

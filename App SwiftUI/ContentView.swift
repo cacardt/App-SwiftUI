@@ -10,10 +10,10 @@ import SwiftUI
 
 class Inventory : ObservableObject {
 
-    @Published var loot = ["Epée", "Bouclier", "Armure"]
+    @Published var loot = lootItems
     
-    func addItem(withName name: String) {
-        loot.append(name)
+    func addItem(withItem item: LootItem) {
+        loot.append(item)
     }
 }
 
@@ -25,13 +25,28 @@ struct ContentView: View {
         
         NavigationStack{
             List{
-                Button(action: {
-                    inventory.addItem(withName: "Magie de feu")
-                }, label: {
-                    Text("Ajouter")
-                })
                 ForEach(inventory.loot, id: \.self) { item in
-                    Text(item)
+                    NavigationLink{
+                        LootDetailView(item: item)
+                    }label: {
+                        HStack {
+                            
+                            Circle()
+                                .fill(item.rarity.color)
+                                .frame(width: 10, height: 10)
+                            Text(item.type.rawValue)
+                            VStack(alignment: .leading) {
+                                Text(item.name)
+                                    .font(.headline)
+                                Text("Quantité : \(item.quantity)")
+                                    .font(.subheadline)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                        }
+                        .padding(.vertical, 4)
+                    }
+
                 }
             }.navigationBarTitle("Loot")
             .toolbar(content: {
