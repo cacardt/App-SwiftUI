@@ -10,6 +10,7 @@ import SwiftUI
 struct AddItemView: View {
     @EnvironmentObject var inventory: Inventory
     @Environment(\.dismiss) private var dismiss
+    @State var valid : Bool = false
     @State var name = ""
     @State var rarity = Rarity.common
     @State var game = Game.emptyGame
@@ -49,7 +50,7 @@ struct AddItemView: View {
                     }
                 }.pickerStyle(.palette)
                 
-
+                
             }
             Section{
                 Toggle(isOn: $attackItem){
@@ -63,14 +64,28 @@ struct AddItemView: View {
             }
             Section{
                 Button(action: {
-                    inventory.addItem(withItem: LootItem(id: UUID.init() ,quantity: quantity, name: name, type: typeItem, rarity: rarity, game: game))
-                    dismiss()
+
+                    if(name.isEmpty){
+                        valid = true
+                    }
+                    else {
+                        inventory.addItem(withItem: LootItem(id: UUID.init() ,quantity: quantity, name: name, type: typeItem, rarity: rarity, game: game))
+                        dismiss()
+                    }
+
                 }, label: {
                     Text("Ajouter")
-                })  
+                })
+                .alert(
+                    isPresented: $valid
+                ){
+                    Alert(
+                        title: Text("Nom incorrecte "),
+                        message: Text("Le nom doit faire au minimum 3 caractères")
+                    )
+                }
             }
         }
-
     }
 }
 enum Rarity: String, CaseIterable {
