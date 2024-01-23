@@ -67,7 +67,7 @@ struct AddItemView: View {
                     dismiss()
                 }, label: {
                     Text("Ajouter")
-                })
+                })  
             }
         }
 

@@ -29,22 +29,7 @@ struct ContentView: View {
                     NavigationLink{
                         LootDetailView(item: item)
                     }label: {
-                        HStack {
-                            
-                            Circle()
-                                .fill(item.rarity.color)
-                                .frame(width: 10, height: 10)
-                            Text(item.type.rawValue)
-                            VStack(alignment: .leading) {
-                                Text(item.name)
-                                    .font(.headline)
-                                Text("Quantité : \(item.quantity)")
-                                    .font(.subheadline)
-                            }
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                        }
-                        .padding(.vertical, 4)
+                        LootRow(item: item)
                     }
 
                 }
@@ -70,3 +55,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
+
