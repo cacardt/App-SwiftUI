@@ -9,7 +9,7 @@ import SwiftUI
 
 
 class Inventory : ObservableObject {
-
+    
     @Published var loot = lootItems
     
     func addItem(withItem item: LootItem) {
@@ -31,10 +31,18 @@ struct ContentView: View {
                     }label: {
                         LootRow(item: item)
                     }
-
+                    
                 }
             }.navigationBarTitle("Loot")
-            .toolbar(content: {
+                .toolbar(content: {
+                    ToolbarItem(placement: ToolbarItemPlacement.automatic) {
+                        Button(action: {
+                            UserDefaults.standard.setValue(false, forKey: "is_On_Boarding_Done")
+                        },
+                               label: {
+                            Image(systemName: "arrow.clockwise.circle.fill")
+                        })
+                    }
                     ToolbarItem(placement: ToolbarItemPlacement.automatic){
                         Button(action: {
                             showAddItemView.toggle()
@@ -43,10 +51,11 @@ struct ContentView: View {
                             Image(systemName: "plus.circle.fill")
                         })
                     }
+
                 })
-            .sheet(isPresented: $showAddItemView, content: {
-                AddItemView().environmentObject(inventory)
-            })
+                .sheet(isPresented: $showAddItemView, content: {
+                    AddItemView().environmentObject(inventory)
+                })
         }
     }
 }

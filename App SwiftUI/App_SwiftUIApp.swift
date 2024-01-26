@@ -9,9 +9,18 @@ import SwiftUI
 
 @main
 struct App_SwiftUIApp: App {
+    
+    @AppStorage("is_On_Boarding_Done") var isOnBoardingDone: Bool = false
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if isOnBoardingDone {
+                ContentView()
+            }
+            else {
+                OnboardingView()
+            }
+
         }
     }
 }
